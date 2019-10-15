@@ -1,4 +1,4 @@
-package entity.employee;
+package by.epam.oop4.entity.employee;
 
 import java.util.Optional;
 
