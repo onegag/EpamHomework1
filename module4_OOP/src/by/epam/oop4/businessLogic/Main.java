@@ -7,7 +7,7 @@ import java.io.Console;
 public class Main {
     public static void main(String[] args) {
         PathSetter pathSetter = new PathSetter();
-        pathSetter.read();
+        pathSetter.read(System.in);
 
     }
 }

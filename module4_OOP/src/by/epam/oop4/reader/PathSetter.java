@@ -7,7 +7,7 @@ public class PathSetter {
     private boolean access = false;
     private File file;
 
-    public  File read(){
+    public File read(InputStream inputStream) {
         Scanner scanner = new Scanner(System.in);
         do {
             System.out.println("Enter path");
@@ -17,7 +17,5 @@ public class PathSetter {
         return file;
     }
 
-//    public  File read(String filePath) {
-//    }
 
 }
