@@ -1,6 +1,6 @@
-package by.epam.oop4.businessLogic;
+package by.epam.oop4.logic;
 
-public class IdGenerator {
+public  class IdGenerator {
     private static final int MAX_ID = 3_000_000;
     private static final int MIN_ID = 1;
     private static int counter;
@@ -13,6 +13,7 @@ public class IdGenerator {
     }
 
     public static void setId(int id) {
+        //добавить проверку на пидора
         counter = id;
     }
 

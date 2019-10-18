@@ -1,9 +1,11 @@
 package by.epam.oop4.entity.employee;
 
 public abstract class Employee {
+
+    private double EmployeeId;
     private String firstName;
     private String secondName;
-    private int PointId;
+
     private int salary;
     private double experience;
 

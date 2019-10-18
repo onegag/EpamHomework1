@@ -1,4 +1,4 @@
-package by.epam.oop4.businessLogic;
+package by.epam.oop4.logic;
 
 import by.epam.oop4.entity.employee.Employee;
 

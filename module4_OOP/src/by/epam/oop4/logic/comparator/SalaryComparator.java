@@ -1,4 +1,4 @@
-package by.epam.oop4.businessLogic.comparator;
+package by.epam.oop4.logic.comparator;
 
 import by.epam.oop4.entity.employee.Employee;
 
