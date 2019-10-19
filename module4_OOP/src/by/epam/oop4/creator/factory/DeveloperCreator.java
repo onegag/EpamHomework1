@@ -1,4 +1,4 @@
-package by.epam.oop4.logic.factory;
+package by.epam.oop4.creator.factory;
 
 
 import by.epam.oop4.entity.employee.Developer;
