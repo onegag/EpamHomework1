@@ -1,10 +1,9 @@
-package by.epam.oop4.creator;
+package by.epam.oop4.creator.validator;
 
 import by.epam.oop4.entity.types.DevLanguage;
 import by.epam.oop4.entity.types.Position;
 
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 

@@ -1,4 +1,4 @@
-package by.epam.oop4.creator;
+package by.epam.oop4.creator.validator;
 
 import java.util.List;
 

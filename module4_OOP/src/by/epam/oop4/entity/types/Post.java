@@ -6,7 +6,7 @@ public enum Post {
     private String post;
 
 
-    Post(String post) {
+     Post(String post) {
         this.post=post.toLowerCase();
     }
 }
