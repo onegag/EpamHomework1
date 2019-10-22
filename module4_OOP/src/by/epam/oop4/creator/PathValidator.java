@@ -1,4 +1,5 @@
-package by.epam.oop4.creator.validator;
+package by.epam.oop4.creator;
+
 import java.io.File;
 
 public class PathValidator {

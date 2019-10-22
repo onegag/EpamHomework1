@@ -1,50 +1,55 @@
 package by.epam.oop4.creator;
 
-import by.epam.oop4.creator.factory.*;
-import by.epam.oop4.creator.validator.DataValidator;
-import by.epam.oop4.entity.types.*;
+import by.epam.oop4.creator.creatorimpl.DeveloperCreator;
+import by.epam.oop4.creator.creatorimpl.ProjectManagerCreator;
+import by.epam.oop4.creator.creatorimpl.TesterCreator;
+import by.epam.oop4.creator.validatorimpl.ProjectManagerValidator;
+import by.epam.oop4.creator.validatorimpl.TesterValidator;
+import by.epam.oop4.entity.employee.Employee;
+import by.epam.oop4.exception.WrongEmployeeFormatException;
 
-import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 
-public class EmployeeFactory implements DataParser{
+public class EmployeeFactory {
 
     public static final String REGEX_DELIMITER = "\\s+";
 
-    IEmployeeCreator employeeCreator;
-    private Post post;
-    private String firstName;
-    private String secondName;
-    private int Salary;
-    private LocalTime startWork;
-    private DevLanguage language;
-    private TesterType testerType;
-    private Position position;
-    private int projectsCounter;
+    Creator creator;
+    List<String> fields = new ArrayList<>();
+    DataValidator dataValidator;
 
 
-    @Override
-    public List<String> parse(String line) {
-        line=line.trim();
-        List<String> fields = Arrays.asList(line.split(REGEX_DELIMITER));
-        return fields;
+    private void parse(String line) {
+        line = line.trim();
+        fields = Arrays.asList(line.split(REGEX_DELIMITER));
 
     }
 
-    public void create(){
-        switch (post){
-            case DEVELOPER:
-                employeeCreator = new DeveloperCreator();
-                break;
-            case TESTER:
-                employeeCreator = new ProjectManagerCreator();
-                break;
-            case PM:
-                employeeCreator= new TesterCreator();
-                break;
+    public Employee create(String line) throws WrongEmployeeFormatException {
+        parse(line);
+        if (fields.get(4).equalsIgnoreCase("project")) {
+            dataValidator = new ProjectManagerValidator();
+            creator = new ProjectManagerCreator();
+
+        } else if (fields.get(4).equalsIgnoreCase("tester")) {
+            dataValidator = new TesterValidator();
+            creator = new TesterCreator();
+
+
+        } else if (fields.get(4).equalsIgnoreCase("developer")) {
+            dataValidator = new ProjectManagerValidator();
+            creator = new DeveloperCreator();
+        } else {
+            throw new WrongEmployeeFormatException();
         }
+
+        if (dataValidator.check(fields)[4]) {
+            return creator.create(fields);
+        } else throw new WrongEmployeeFormatException();
+
     }
 
 

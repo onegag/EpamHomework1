@@ -1,4 +1,4 @@
-package by.epam.oop4.logic;
+package by.epam.oop4.service;
 
 public class Main {
     public static void main(String[] args) {

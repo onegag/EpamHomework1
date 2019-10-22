@@ -1,27 +1,78 @@
 package by.epam.oop4.entity.employee;
 
+import by.epam.oop4.service.IdGenerator;
+
+import java.time.Duration;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public abstract class Employee {
 
-    private double EmployeeId;
-    private String firstName;
-    private String secondName;
+    protected final long EmployeeId;
+    protected String firstName;
+    protected String secondName;
 
-    private int salary;
-    private double experience;
+    protected int salary;
+    protected LocalDate startWork;
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(EmployeeId);
+
+    public Employee() {
+        EmployeeId = IdGenerator.generateId();
     }
+
+    public long experience() {
+        return Duration.between(startWork.atStartOfDay(), LocalDate.now().atStartOfDay()).toDays();
+    }
+
+
+    public long getEmployeeId() {
+        return EmployeeId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getSecondName() {
+        return secondName;
+    }
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    public LocalDate getStartWork() {
+        return startWork;
+    }
+
+    public void setStartWork(LocalDate startWork) {
+        this.startWork = startWork;
+    }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Employee)) return false;
         Employee employee = (Employee) o;
-        return Double.compare(employee.EmployeeId, EmployeeId) == 0 ;
+        return EmployeeId == employee.EmployeeId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(EmployeeId);
     }
 
     @Override
@@ -31,13 +82,8 @@ public abstract class Employee {
                 ", firstName='" + firstName + '\'' +
                 ", secondName='" + secondName + '\'' +
                 ", salary=" + salary +
-                ", experience=" + experience +
+                ", startWork=" + startWork +
                 '}';
     }
-//    @Override
-//    public String toString() {
-//
-//        return "Employee "+firstName+" "+secondName+" "+EmployeeId;
-//
-//    }
+
 }
