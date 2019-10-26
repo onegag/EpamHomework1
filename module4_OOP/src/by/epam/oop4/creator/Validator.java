@@ -2,7 +2,7 @@ package by.epam.oop4.creator;
 
 import java.util.List;
 
-public interface DataValidator {
+public interface Validator {
     boolean[] check(List<String> fields);
 
 

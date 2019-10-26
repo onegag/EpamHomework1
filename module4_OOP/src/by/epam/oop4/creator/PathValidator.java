@@ -5,7 +5,7 @@ import java.io.File;
 public class PathValidator {
     private static String message;
 
-    public static boolean check(File file) {
+     static boolean check(File file) {
 
         if (file == null || !file.exists() || file.isDirectory()) {
             message = "Wrong path " + file.toString();

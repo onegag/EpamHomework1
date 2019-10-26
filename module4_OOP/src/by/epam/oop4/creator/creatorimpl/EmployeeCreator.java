@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public abstract class EmployeeCreator implements Creator {
+ abstract class EmployeeCreator implements Creator {
     void setCommonFields(List<String> fields, Employee employee) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
         employee.setFirstName(fields.get(0));

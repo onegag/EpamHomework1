@@ -15,8 +15,20 @@ public class TeamCreator {
     PathValidator pathValid = new PathValidator();
     List<String> lines;
 
+    public Team collectTeam() {
+        EmployeeFactory employeeFactory = new EmployeeFactory();
+        Team team = new Team();
+        for (String line : lines) {
+            try {
+                team.addEmployee(employeeFactory.choose(line));
+            } catch (WrongEmployeeFormatException e) {
+                e.printStackTrace();
+            }
+        }
+        return team;
+    }
 
-    public File setFile(InputStream inputStream) {
+    private File setFile(InputStream inputStream) {
 
 
         Scanner scanner = new Scanner(inputStream);
@@ -33,7 +45,7 @@ public class TeamCreator {
         return file;
     }
 
-    public File setFile(String filepath) throws WrongFilePathException {
+    private File setFile(String filepath) throws WrongFilePathException {
         file = new File(filepath);
         if (pathValid.check(file)) {
             return file;
@@ -42,7 +54,7 @@ public class TeamCreator {
         }
     }
 
-    public List<String> takeLine() throws WrongFileDataException {
+    private List<String> takeLine() throws WrongFileDataException {
 
         try {
             lines = Files.readAllLines(file.toPath());
@@ -51,19 +63,6 @@ public class TeamCreator {
             throw new WrongFileDataException();
 
         }
-    }
-
-    public Team collectTeam() {
-        EmployeeFactory employeeFactory = new EmployeeFactory();
-        Team team = new Team();
-        for (String line : lines) {
-            try {
-                team.addEmployee(employeeFactory.create(line));
-            } catch (WrongEmployeeFormatException e) {
-                e.printStackTrace();
-            }
-        }
-        return team;
     }
 
 

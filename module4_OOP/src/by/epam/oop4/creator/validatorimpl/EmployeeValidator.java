@@ -1,11 +1,11 @@
 package by.epam.oop4.creator.validatorimpl;
 
-import by.epam.oop4.creator.DataValidator;
+import by.epam.oop4.creator.Validator;
 
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class EmployeeValidator implements DataValidator {
+public abstract class EmployeeValidator implements Validator {
     @Override
     public boolean[] check(List<String> fields) {
         boolean[] correctFields = new boolean[4];
